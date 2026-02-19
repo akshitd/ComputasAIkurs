@@ -1,2 +1,3 @@
 # computas-ai-workshop
-#inshallah merch on us
+
+Vil du at barna dine skal lære seg engelish very good? check this out mon amiè
