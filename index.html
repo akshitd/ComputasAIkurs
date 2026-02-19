@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrightWords - Lær engelsk for barn</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-shapes" aria-hidden="true">
+      <span class="shape shape-1"></span>
+      <span class="shape shape-2"></span>
+      <span class="shape shape-3"></span>
+      <span class="shape shape-4"></span>
+    </div>
+
+    <header class="hero">
+      <button class="theme-toggle" id="theme-toggle">Mørk modus</button>
+      <div class="hero-content">
+        <p class="tag">BrightWords</p>
+        <h1>Lek. Snakk. Les.</h1>
+        <p class="subhead">
+          En engelsk lekeplass for deg som vil lære engelsk kjapt.
+        </p>
+        <div class="hero-actions">
+          <button class="primary" data-jump="activities">Start å spille</button>
+          <button class="ghost" data-jump="progress">Se fremgang</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h2>Dagens setning</h2>
+        <p class="spark-text" data-noun="fox">"The fox is quick."</p>
+        <div class="spark-row" id="spark-actions">
+          <button class="chip" data-spark="say">Si det</button>
+          <button class="chip" data-spark="noun">Finn substantivet</button>
+        </div>
+        <div class="spark-noun" id="spark-noun" hidden>
+          <p class="spark-instruction">Trykk på ordet som er substantivet:</p>
+          <div class="spark-letters" id="spark-letters"></div>
+          <p class="spark-progress" id="spark-progress">Velg riktig ord</p>
+        </div>
+        <p class="spark-feedback" id="spark-feedback">Velg en handling for å starte.</p>
+      </div>
+    </header>
+
+    <main>
+      <section id="activities" class="section">
+        <div class="section-head">
+          <h2>Læringssoner</h2>
+          <p>Velg et spill. Få stjerner. Øv hver dag.</p>
+        </div>
+        <div class="grid">
+          <article class="card" data-panel="letters">
+            <h3>Lyd og bokstaver</h3>
+            <p>Trykk på bokstaver, hør lydene og knytt dem til ord.</p>
+            <button class="secondary">Spill</button>
+          </article>
+          <article class="card" data-panel="builder">
+            <h3>Ordbygger</h3>
+            <p>Fyll inn manglende bokstaver og lag nye ord.</p>
+            <button class="secondary">Spill</button>
+          </article>
+          <article class="card" data-panel="match">
+            <h3>Bilde‑match</h3>
+            <p>Match emoji til riktig engelsk ord.</p>
+            <button class="secondary">Spill</button>
+          </article>
+          <article class="card" data-panel="sentences">
+            <h3>Setningsbygger</h3>
+            <p>Velg ord for å bygge en riktig engelsk setning.</p>
+            <button class="secondary">Spill</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section play" aria-live="polite">
+        <div class="panel" id="panel-letters">
+          <div class="panel-head">
+            <h3>Lyd og bokstaver</h3>
+            <p>Trykk på en bokstav for å se et ord.</p>
+          </div>
+          <div class="letters" id="letters-grid"></div>
+          <div class="result result-row">
+            <div>
+              <p class="big" id="letter-word">Velg en bokstav</p>
+              <p id="letter-hint">A is for ...</p>
+            </div>
+            <button class="audio" id="letter-speak">Si det høyt</button>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-builder" hidden>
+          <div class="panel-head">
+            <h3>Ordbygger</h3>
+            <p>Fullfør ordet med riktige bokstaver.</p>
+            <button class="audio" id="builder-hint">Vis bildehint</button>
+          </div>
+          <div class="builder">
+            <div class="word" id="builder-word"></div>
+            <div class="options" id="builder-options"></div>
+            <div class="photo" id="builder-photo" hidden></div>
+            <div class="builder-actions">
+              <button class="secondary" id="builder-next">Neste ord</button>
+            </div>
+            <p class="feedback" id="builder-feedback"></p>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-match" hidden>
+          <div class="panel-head">
+            <h3>Bilde‑match</h3>
+            <p>Trykk på emoji, så på riktig ord.</p>
+          </div>
+          <div class="match">
+            <div class="emoji" id="match-emoji"></div>
+            <div class="options" id="match-options"></div>
+            <p class="feedback" id="match-feedback"></p>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-sentences" hidden>
+          <div class="panel-head">
+            <h3>Setningsbygger</h3>
+            <p>Velg ett ord fra hver kolonne for å lage en setning.</p>
+          </div>
+          <div class="sentences">
+            <div class="columns" id="sentence-columns"></div>
+            <div class="sentence-output">
+              <p class="big" id="sentence-result"></p>
+              <div class="sentence-actions">
+                <button class="secondary" id="sentence-check">Sjekk</button>
+                <button class="audio" id="sentence-speak">Les høyt</button>
+                <button class="secondary" id="sentence-next">Neste</button>
+              </div>
+              <p class="feedback" id="sentence-feedback"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="progress" class="section progress">
+        <div class="section-head">
+          <h2>Din framgang!</h2>
+          <p>Få poeng og oppgrader stjerner når du øver.</p>
+        </div>
+        <div class="points">
+          Totale poeng: <span id="points-total">0</span>
+        </div>
+        <div class="stars" id="stars"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>BrightWords hjelper barn å øve engelsk hver dag.</p>
+      <small>Tips: Øv 10 minutter daglig for gode resultater.</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
